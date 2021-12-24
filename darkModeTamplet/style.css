@@ -1,0 +1,191 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+button,a,ul,li, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  text-decoration: none;
+}
+
+ :root {
+  --backgroundColor: hsl(0, 0%, 100%);
+  --forgroundColor:hsla(0, 0%, 0%, 0.726);
+}
+
+@media(prefers-color-scheme:dark){
+  :root{
+  --backgroundColor:hsla(0, 0%, 0%);
+  --forgroundColor: hsl(0, 0%, 100%);
+}
+
+} 
+.lightMode {
+  --backgroundColor: hsl(0, 0%, 100%);
+  --forgroundColor:hsla(0, 0%, 0%);
+}
+
+.darkMode {
+  --backgroundColor:hsla(0, 0%, 0%);
+  --forgroundColor: hsl(0, 0%, 100%);
+}
+
+body {
+  font-family:sans-serif;
+  padding:10px;
+  --bg: var(--backgroundColor);
+  background: var(--bg);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  transition:background-color 0s ease-in-out 500ms;
+}
+.darkMode{
+  transition:background-color 0s ease-in-out 500ms;
+}
+
+.nav{
+  padding:5px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(62, 247, 62, 0.719);
+  color:rgb(3, 46, 3);
+  background-color:rgb(62, 247, 62);
+}
+
+svg {
+  height: 35px;
+  width: 35px;
+  fill:var(--forgroundColor);
+}
+
+#ripple{
+  position:absolute;
+  height: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  z-index: -1;
+  right:0%;
+  margin : 0px 30px 0px 0px;
+}
+
+.lightMode #ripple{
+  background-color: var(--backgroundColor);
+  transform-origin: center;
+  transform:scale(0);
+  transition:transform 1s ease-out;
+  animation: rippleAnimation 700ms ease-out  ; 
+}
+
+.darkMode #ripple{
+  background-color:var(--backgroundColor);
+  transform-origin: center;
+  transform:scale(0);
+  transition:transform 1s ease-out;
+  animation: ripple2Animation 700ms ease-out  ; 
+}
+
+@keyframes rippleAnimation {
+  0%{transform:scale(0.01)}
+  85%{transform:scale(60)}
+  99.9%{transform:scale(60)}
+  100%{transform:scale(0);}
+}
+@keyframes ripple2Animation {
+  0%{transform:scale(0.01)}
+  85%{transform:scale(60)}
+  99.9%{transform:scale(60)}
+  100%{transform:scale(0);}
+}
+
+#svgContainer {
+  width: max-content;
+  height: max-content;
+  aspect-ratio: 1;
+  border-radius: 50% 50% 50% 50%;
+  position: absolute;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  right:0%;
+  margin : 0px 30px 0px 0px;
+  padding: 7px;
+  background-color: hsla(0, 0%, 90%, 0.075);
+  /* background-image:radial-gradient(
+    hsla(0, 0%, 50%, 0),
+    hsla(0, 0%, 50%, 1)
+    )
+    ; */
+    /* transition:background-color 150ms ease-in; */
+}
+
+.lightMode #svgContainer{
+  background-color: hsla(0, 0%, 90%, 0.568);
+
+}  
+#svgContainer:hover {
+  background-color: hsla(0, 0%, 50%, 0.4);
+}
+
+.lightMode #sun{
+  transform: translate(55px ,-30px) ;
+  fill: var(--forgroundColor);
+  transition:transform 300ms ease-out;
+}
+
+.darkMode #sun {
+  transform-origin: center;
+  transition:transform 300ms ease-out;
+  animation: sunAnimation 400ms ease-out  3s; 
+}
+
+.lightMode  #rings{
+  transform-origin: center;
+  transform: rotateZ(310deg);
+  transition:transform 900ms ease-out;
+  fill: var(--forgroundColor);
+  animation: ringsAnimation 500ms cubic-bezier(0, 3.26, 1, 3.26)  3s; 
+}
+
+.darkMode #rings {
+  transform: rotateZ(-10deg);
+  transition:transform 900ms ease-out;
+  transform-origin: center;
+}
+
+@keyframes ringsAnimation{
+  0%{transform:rotateZ(360deg)}
+  15%{transform:rotateZ(350deg)}
+  20%{transform:rotateZ(370deg)}
+  30%{transform:rotateZ(350deg)}
+  40%{transform:rotateZ(360deg)}
+  50%{transform:rotateZ(3705deg)}
+  60%{transform:rotateZ(360deg)}
+  70%{transform:rotateZ(350deg)}
+  80%{transform:rotateZ(370deg)}
+  90%{transform:rotateZ(350deg)}
+  100%{transform:rotateZ(355deg)}
+}
+
+@keyframes sunAnimation {
+  0%{transform:scale(0.01)}
+  85%{transform:scale(1.1)}
+  100%{transform:scale(1.1)}
+}
+
+/* svg animation for hover
+#svgContainer:focus #rings {
+  transform: rotateZ(180deg);
+  fill: black;
+} 
+#svgContainer:focus #sun {
+  transform: translate(-60px);
+  fill: black;
+} */
+
+
