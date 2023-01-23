@@ -148,18 +148,38 @@ svg {
 
 main{
   display: flex;
+  justify-content: space-between;
 }
 
-.containers{
-  box-sizing: border-box;
+.text-containers{
+
   color: var(--forgroundColor);
   background-color: hsla(0, 0%, 80%, 0.141);
-
-  margin:50px 50px 0px 50px  ;
-  padding: 2rem;
+  padding: 1rem;
   text-align: justify;
-  border-radius: 1rem;
+  width:50%;
+  margin:1rem;
 }
+
+.image-containers{
+  margin:1rem;
+
+width:50%;
+overflow: hidden;
+display: flex;
+flex-wrap: wrap;
+object-fit: cover;
+
+}
+
+img{
+width:30%;
+background-color: hsla(0, 0%, 80%, 0.141);
+padding: .7rem;
+margin:.2rem;
+filter: grayscale(100%);
+}
+
 
 
 
@@ -198,4 +218,24 @@ main{
 }
 
 
+@media (max-width: 840px) {
+  main{
+    display:block;
+  }
+  .image-containers{
+    display: block;
+    width:95%;
+    margin:auto;
+
+  }
+  .text-containers{
+    width:92%;
+    margin:auto;
+  }
+  img{
+    width:47%;
+  }
+
+  
+}
 
